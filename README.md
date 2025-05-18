@@ -159,6 +159,7 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)
 | 变量名 | 示例 | 备注 |
 |--------|---------|-----|
 | PASSWORD | `auto` | 可以取任意值 |
+| SCV | `false`或`0` | 是否跳过TLS证书验证(默认`true`开启跳过证书验证) |
 | PROXYIP | `proxyip.cmliussss.net:443` | 备选作为访问CFCDN站点的代理节点(支持多ProxyIP, ProxyIP之间使用`,`或`换行`作间隔) |
 | SOCKS5  | `user:password@127.0.0.1:1080` | 优先作为访问CFCDN站点的SOCKS5代理(支持多socks5, socks5之间使用`,`或`换行`作间隔) |
 | GO2SOCKS5  | `blog.cmliussss.com`,`*.ip111.cn`,`*google.com` | 设置`SOCKS5`变量之后，可设置强制使用socks5访问名单(`*`可作为通配符，`换行`作多元素间隔) |
@@ -238,8 +239,8 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)
    ```url
    /socks5=user:password@127.0.0.1:1080
    /?socks5=user:password@127.0.0.1:1080
-   /socks://dXNlcjpwYXNzd29yZA==@127.0.0.1:1080
-   /socks5://user:password@127.0.0.1:1080
+   /socks://dXNlcjpwYXNzd29yZA==@127.0.0.1:1080 (默认激活全局SOCKS5)
+   /socks5://user:password@127.0.0.1:1080 (默认激活全局SOCKS5)
    ```
 
 5. **当你的`ADDAPI`可作为`PROXYIP`时，可在`ADDAPI`变量末位添加`?proxyip=true`，即可在生成节点时使用优选IP自身作为`PROXYIP`**
