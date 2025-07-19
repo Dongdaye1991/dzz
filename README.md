@@ -161,8 +161,10 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)
 | PASSWORD | `auto` | 可以取任意值 |
 | SCV | `false`或`0` | 是否跳过TLS证书验证(默认`true`开启跳过证书验证) |
 | PROXYIP | `proxyip.cmliussss.net:443` | 备选作为访问CFCDN站点的代理节点(支持多ProxyIP, ProxyIP之间使用`,`或`换行`作间隔) |
-| SOCKS5  | `user:password@127.0.0.1:1080` | 优先作为访问CFCDN站点的SOCKS5代理(支持多socks5, socks5之间使用`,`或`换行`作间隔) |
-| GO2SOCKS5  | `blog.cmliussss.com`,`*.ip111.cn`,`*google.com` | 设置`SOCKS5`变量之后，可设置强制使用socks5访问名单(`*`可作为通配符，`换行`作多元素间隔) |
+| HTTP  | `user:password@127.0.0.1:8080`或`127.0.0.1:8080` | 优先作为访问CFCDN站点的HTTP代理(支持多HTTP代理之间使用`,`或`换行`作间隔) |
+| SOCKS5  | `user:password@127.0.0.1:1080`或`127.0.0.1:1080` | 优先作为访问CFCDN站点的SOCKS5代理(支持多socks5, socks5之间使用`,`或`换行`作间隔) |
+| GO2SOCKS5  | `blog.cmliussss.com`,`*.ip111.cn`,`*google.com` | 设置`SOCKS5`或`HTTP`变量之后，可设置强制使用socks5访问名单(设置为`*`可作为全局代理) |
+| NAT64 | `dns64.cmi.ztvi.org`或`2001:67c:2960:6464::/96` | 作为PROXYIP失效后的应急兜底，自行查询[nat64.xyz](https://nat64.xyz/)的`DNS64 Server`或`NAT64 Prefix` |
 | ADD | `www.csgo.com:2087`,`icook.hk` | 本地优选域名/优选IP(支持多元素之间`,`或`换行`作间隔) |
 | ADDAPI | [https://raw.github.../addressesapi.txt](https://raw.githubusercontent.com/cmliu/WorkerVless2sub/main/addressesapi.txt) | 不解释, 懂得都懂 |
 | ADDCSV | [https://raw.github.../addressescsv.csv](https://raw.githubusercontent.com/cmliu/WorkerVless2sub/main/addressescsv.csv) | 不解释, 懂得都懂 |
@@ -179,6 +181,10 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)
 | URL302 | `https://t.me/CMLiussss` | 主页302跳转(支持多url, url之间使用`,`或`换行`作间隔, 小白别用) |
 | URL | `https://blog.cmliussss.com` | 主页反代伪装(支持多url, url之间使用`,`或`换行`作间隔, 乱设容易触发反诈) |
 | CFPORTS | `2053`,`2096`,`8443` | CF账户标准端口列表 |
+| CF_EMAIL | `admin@google.com` | CF账户的邮箱，用于获取 Workers/Pages 请求数 |
+| CF_APIKEY | `1234567890abcdef1234567890abcdef` | CF账户的`Global API Key`，用于获取 Workers/Pages 请求数 |
+
+> **注意：** 只有 `CF_EMAIL` 和 `CF_APIKEY` 变量同时存在时，订阅时才会返回 CF Workers/Pages 的请求数用量信息。
 
 ## ❗ 注意事项
 
@@ -243,6 +249,11 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)
    /socks5://user:password@127.0.0.1:1080 (默认激活全局SOCKS5)
    ```
 
+- 指定 `HTTP代理` 案例
+   ```url
+   /http://user:password@127.0.0.1:8080 (默认激活全局SOCKS5)
+   ```
+
 5. **当你的`ADDAPI`可作为`PROXYIP`时，可在`ADDAPI`变量末位添加`?proxyip=true`，即可在生成节点时使用优选IP自身作为`PROXYIP`**
 - 指定 `ADDAPI` 作为 `PROXYIP` 案例
    ```url
@@ -278,3 +289,5 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)
 - [emn178](https://github.com/emn178/js-sha256)
 - [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/config)
 - [SHIJS1999](https://github.com/SHIJS1999/cloudflare-worker-vless-ip)
+- [股神](https://t.me/CF_NAT/38889)
+- [Workers/Pages Metrics](https://t.me/zhetengsha/3382)
